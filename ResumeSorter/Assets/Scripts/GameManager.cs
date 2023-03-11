@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> yesPile;
     public List<GameObject> noPile;
 
+    [SerializeField] UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +35,16 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
+        uiManager.round = 1;
+    }
+
+    public void RejectResume()
+    {
+
+    }
+
+    public void AcceptResume()
+    {
+
     }
 }

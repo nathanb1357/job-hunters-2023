@@ -5,7 +5,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     // Timer
-    public float time;
+    float time;
     private bool timerEnabled = false;
     public UIManager uiManager;
 
@@ -14,17 +14,25 @@ public class Timer : MonoBehaviour
     {
         timerEnabled = true;
         time = 10f;
+        InvokeRepeating("CountTimer", 0f, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    
+
+    void CountTimer()
+    {
         if (timerEnabled)
         {
             if (time > 0)
             {
-                time -= Time.deltaTime;
                 uiManager.UpdateTimer(time);
+                time -= 1;
             }
             else
             {
@@ -33,5 +41,6 @@ public class Timer : MonoBehaviour
                 timerEnabled = false;
             }
         }
+        
     }
 }

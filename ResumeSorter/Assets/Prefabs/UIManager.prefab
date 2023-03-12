@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundTxt: {fileID: 4425295216596161358, guid: ab2e82e4851640e4fa33546ba2289ce0, type: 3}
   timerTxt: {fileID: 4578175474370236673, guid: 0fcf9bcfe11926d46ba4c1f853e32c58, type: 3}
+  resumeObj: {fileID: 638915248287233592, guid: d6c7b76c86384814b9d027532af16e49, type: 3}

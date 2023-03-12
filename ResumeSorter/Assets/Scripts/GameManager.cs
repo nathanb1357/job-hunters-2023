@@ -133,4 +133,9 @@ public class GameManager : MonoBehaviour
             totalScore += remained.Value;
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

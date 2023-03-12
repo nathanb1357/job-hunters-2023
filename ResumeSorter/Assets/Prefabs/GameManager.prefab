@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7b24ca7993d01469282a95e9c01b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resumes: []
-  yesPile: []
-  noPile: []
+  resumesImg:
+  - {fileID: 0}
+  uiManager: {fileID: 22725141010566390, guid: 58f58bbd4ffd85549946c8907b439247, type: 3}

@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set; }
 
-    public List<GameObject> resumes;
-    public List<GameObject> yesPile;
-    public List<GameObject> noPile;
+    Dictionary<Sprite, int> resumes = new Dictionary<Sprite, int>();
+    Dictionary<Sprite, int> yesPile = new Dictionary<Sprite, int>();
+    Dictionary<Sprite, int> noPile = new Dictionary<Sprite, int>();
+
+    public List<Sprite> resumesImg = new List<Sprite>();
+    public Dictionary<Sprite, int> availableResumes;
 
     [SerializeField] UIManager uiManager;
 
@@ -34,8 +37,12 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        foreach (KeyValuePair<Sprite, int> resume in availableResumes)
+        {
+            resumes.Add(resume.Key, resume.Value);
+        }
         SceneManager.LoadScene("Game");
-        uiManager.round = 1;
+        Instantiate(uiManager);
     }
 
     public void RejectResume()

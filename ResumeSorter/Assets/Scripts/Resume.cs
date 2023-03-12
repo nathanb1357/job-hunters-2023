@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Resume : MonoBehaviour
 {
+    Sprite image;
+
     // Start is called before the first frame update
     void Start()
     {

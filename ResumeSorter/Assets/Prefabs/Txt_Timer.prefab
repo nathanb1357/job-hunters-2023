@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4578175474370236686}
   - component: {fileID: 4578175474370236672}
   - component: {fileID: 4578175474370236673}
+  - component: {fileID: -5944099775810106573}
   m_Layer: 5
   m_Name: Txt_Timer
   m_TagString: Untagged
@@ -80,3 +81,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Time Left: 0:10'
+--- !u!114 &-5944099775810106573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4578175474370236687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9462e853cf3b32479ced2c6b9a690e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  uiManager: {fileID: 0}

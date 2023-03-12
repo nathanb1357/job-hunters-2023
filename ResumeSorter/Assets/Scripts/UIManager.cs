@@ -13,18 +13,8 @@ public class UIManager : MonoBehaviour
     string timerPrefix = "Time Left:";
     [SerializeField] Text timerTxt;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Resume
+    [SerializeField] Image resumeObj;
 
     // Update UI of Round
     public void UpdateRound(int round)
@@ -39,5 +29,11 @@ public class UIManager : MonoBehaviour
         currentTime += 1;
 
         timerTxt.text = string.Format("%s %f", timerPrefix, currentTime);
+    }
+
+    // Update Resume
+    public void UpdateResume(Sprite resume)
+    {
+        resumeObj.GetComponent<Image>().sprite = resume;
     }
 }

@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     Dictionary<Sprite, int> noPile = new Dictionary<Sprite, int>();
 
     public List<Sprite> resumesImg = new List<Sprite>();
-    public Dictionary<Sprite, int> availableResumes;
+    public List<int> values = new List<int>();
+    public Dictionary<Sprite, int> availableResumes = new Dictionary<Sprite, int>();
 
     [SerializeField] UIManager uiManager;
 
@@ -27,6 +28,14 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        int i = 0;
+
+        foreach (Sprite img in resumesImg)
+        {
+            availableResumes.Add(img, values[i]);
+            i++;
+        }
     }
 
     // Update is called once per frame

@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set; }
     int round = 0;
 
-    Dictionary<Sprite, int> resumes = new Dictionary<Sprite, int>();
-    Dictionary<Sprite, int> yesPile = new Dictionary<Sprite, int>();
-    Dictionary<Sprite, int> noPile = new Dictionary<Sprite, int>();
+    Dictionary<int,Sprite> resumes = new Dictionary<int,Sprite>();
+    Dictionary<int,Sprite> yesPile = new Dictionary<int,Sprite>();
+    Dictionary<int,Sprite> noPile = new Dictionary<int,Sprite>();
 
-    public List<Sprite> resumesImg = new List<Sprite>();
-    public List<int> values = new List<int>();
-    public Dictionary<Sprite, int> availableResumes = new Dictionary<Sprite, int>();
+    public List<Sprite> images = new List<Sprite>();
+    public List<int> keys = new List<int>();
+    public Dictionary<int,Sprite> availableResumes = new Dictionary<int,Sprite>();
 
     Sprite curResume;
     int curValue;
@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         int i = 0;
-
-        foreach (Sprite img in resumesImg)
+        foreach (Sprite img in images)
         {
-            availableResumes.Add(img, values.ElementAt(i));
+            keys.Add(i);
+            availableResumes.Add(keys.ElementAt(i), img);
             i++;
         }
 
@@ -54,17 +54,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SetCurrentPair(Sprite curSprite, int curPoints)
+    public void SetCurrentPair(int key, Sprite sprite)
     {
-        curResume = curSprite;
-        curValue = curPoints;
+        curResume = sprite;
+        curValue = key;
         uiManager.UpdateResume(curResume);
     }
 
     public void StartGame()
     {
         round = 1;
-        foreach (KeyValuePair<Sprite, int> resume in availableResumes)
+        foreach (KeyValuePair<int,Sprite> resume in availableResumes)
         {
             resumes.Add(resume.Key, resume.Value);
         }
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     public void ResetStack()
     {
         resumes.Clear();
-        foreach (KeyValuePair<Sprite, int> yesDoc in yesPile)
+        foreach (KeyValuePair<int,Sprite> yesDoc in yesPile)
         {
             resumes.Add(yesDoc.Key, yesDoc.Value);
         }
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void RejectResume()
     {
         sortIndex++;
-        noPile.Add(curResume, curValue);
+        noPile.Add(curValue, curResume);
         SetCurrentPair(resumes.ElementAt(sortIndex).Key, resumes.ElementAt(sortIndex).Value);
 
         if (sortIndex >= resumes.Count)
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     public void AcceptResume()
     {
         sortIndex++;
-        yesPile.Add(curResume, curValue);
+        yesPile.Add(curValue, curResume);
         SetCurrentPair(resumes.ElementAt(sortIndex).Key, resumes.ElementAt(sortIndex).Value);
         
         if (sortIndex >= resumes.Count)
@@ -127,11 +127,6 @@ public class GameManager : MonoBehaviour
     {
         DestroyImmediate(uiManager.gameObject, true);
         DestroyImmediate(timer.gameObject, true);
-
-        foreach (KeyValuePair<Sprite, int> remained in resumes)
-        {
-            totalScore += remained.Value;
-        }
     }
 
     public void QuitGame()
